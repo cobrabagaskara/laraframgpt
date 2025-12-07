@@ -1,6 +1,8 @@
 {
-  "name": "Laravel + Filament Optimized",
+  "name": "Laravel DevContainer",
   "dockerFile": "Dockerfile",
+
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
 
   "customizations": {
     "vscode": {
@@ -18,8 +20,6 @@
     "8000": { "label": "Laravel" },
     "5173": { "label": "Vite" }
   },
-
-  "postCreateCommand": "bash .devcontainer/post-create.sh",
 
   "remoteUser": "vscode"
 }
