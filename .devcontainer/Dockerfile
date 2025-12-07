@@ -1,18 +1,15 @@
-# Base image
-FROM mcr.microsoft.com/devcontainers/php:8.3
+# Gunakan base image resmi Devcontainers untuk PHP + Node
+FROM mcr.microsoft.com/devcontainers/php:8.3-node
 
-# Install additional packages & extensions
+# Install dependensi tambahan untuk Laravel
 RUN apt-get update && apt-get install -y \
-    git unzip libicu-dev libpng-dev libzip-dev libonig-dev sqlite3 \
-    redis-server supervisor nano curl && \
-    docker-php-ext-install intl pdo_sqlite zip gd mbstring
+    git unzip libicu-dev libpng-dev libzip-dev sqlite3 redis-server supervisor nano curl
 
-# Disable Xdebug (for speed)
+# Install ekstensi PHP tambahan
+RUN docker-php-ext-install intl pdo pdo_mysql pdo_sqlite zip gd
+
+# Disable Xdebug untuk kecepatan
 RUN rm -f /usr/local/etc/php/conf.d/*xdebug*.ini
 
-# Install Node.js 20 (for Vite)
-RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
-    apt-get install -y nodejs
-
-# Composer cache directory
+# Composer cache
 ENV COMPOSER_CACHE_DIR=/tmp/composer-cache
