@@ -1,24 +1,23 @@
 {
-  "name": "Laravel DevContainer",
+  "name": "Laravel Super Stable",
   "dockerFile": "Dockerfile",
 
   "postCreateCommand": "bash .devcontainer/post-create.sh",
-
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "bmewburn.vscode-intelephense-client",
-        "neilbrayfield.php-docblocker",
-        "mikestead.dotenv",
-        "ms-vscode.vscode-typescript-next"
-      ]
-    }
-  },
 
   "forwardPorts": [8000, 5173],
   "portsAttributes": {
     "8000": { "label": "Laravel" },
     "5173": { "label": "Vite" }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "bmewburn.vscode-intelephense-client",
+        "mikestead.dotenv",
+        "neilbrayfield.php-docblocker"
+      ]
+    }
   },
 
   "remoteUser": "vscode"
