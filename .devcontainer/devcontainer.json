@@ -1,0 +1,28 @@
+{
+  "name": "Laravel + Filament Optimized",
+  "dockerFile": "Dockerfile",
+
+  // Extensions in VS Code
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "bmewburn.vscode-intelephense-client",
+        "neilbrayfield.php-docblocker",
+        "mikestead.dotenv",
+        "ms-vscode.vscode-typescript-next"
+      ]
+    }
+  },
+
+  // Forward ports (Laravel, Vite)
+  "forwardPorts": [8000, 5173],
+  "portsAttributes": {
+    "8000": { "label": "Laravel" },
+    "5173": { "label": "Vite" }
+  },
+
+  // Run automatically after container built
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
+
+  "remoteUser": "vscode"
+}
