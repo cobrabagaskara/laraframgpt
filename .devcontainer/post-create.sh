@@ -1,19 +1,19 @@
 #!/bin/bash
+set -e
 
-# Install composer deps jika ada
+echo "📦 Running Laravel post-create setup..."
+
+# Install PHP dependencies
 if [ -f "composer.json" ]; then
-    composer install
+    composer install --no-interaction
 fi
 
-# Install node deps jika ada
+# Install JS dependencies
 if [ -f "package.json" ]; then
     npm install
 fi
 
-# Generate APP_KEY
-if [ ! -f ".env" ]; then
-    cp .env.example .env
-fi
+# Generate Laravel key
 php artisan key:generate || true
 
-echo "Post-create script selesai!"
+echo "🔥 Setup complete!"
