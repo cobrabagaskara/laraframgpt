@@ -1,6 +1,13 @@
 {
   "name": "Laravel Super Stable",
-  "image": "mcr.microsoft.com/devcontainers/php:8.3",  
+  "image": "mcr.microsoft.com/devcontainers/php:8.3",
+  
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20"
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
 
   "customizations": {
     "vscode": {
@@ -8,14 +15,34 @@
         "bmewburn.vscode-intelephense-client",
         "neilbrayfield.php-docblocker",
         "mikestead.dotenv",
-        "ms-azuretools.vscode-docker"
+        "ms-azuretools.vscode-docker",
+        "amiralizadeh9480.laravel-extra-intellisense",
+        "ryannaddy.laravel-artisan",
+        "onecentlin.laravel5-snippets"
       ]
     }
   },
 
   "postCreateCommand": "bash .devcontainer/post-create.sh",
 
-  "forwardPorts": [8000, 5173],
+  "forwardPorts": [8000, 5173, 3306],
+  
+  "portsAttributes": {
+    "8000": {
+      "label": "Laravel",
+      "onAutoForward": "openPreview"
+    },
+    "5173": {
+      "label": "Vite",
+      "onAutoForward": "openPreview"
+    }
+  },
 
-  "remoteUser": "vscode"
+  "remoteUser": "vscode",
+  
+  "containerEnv": {
+    "DEBIAN_FRONTEND": "noninteractive"
+  },
+  
+  "updateContentCommand": "sudo chown -R vscode:vscode /var/www/html"
 }
