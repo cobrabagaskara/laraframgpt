@@ -1,0 +1,21 @@
+{
+  "name": "Laravel Super Stable",
+  "image": "mcr.microsoft.com/devcontainers/php:8.3",  
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "bmewburn.vscode-intelephense-client",
+        "neilbrayfield.php-docblocker",
+        "mikestead.dotenv",
+        "ms-azuretools.vscode-docker"
+      ]
+    }
+  },
+
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
+
+  "forwardPorts": [8000, 5173],
+
+  "remoteUser": "vscode"
+}
